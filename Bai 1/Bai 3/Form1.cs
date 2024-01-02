@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -116,7 +117,16 @@ namespace Bai_3
             if (lv_menu.SelectedItems.Count > 0)
             {
                 string selectedPath = (string)lv_menu.SelectedItems[0].Tag;
-                PopulateListView(selectedPath);
+                string type = lv_menu.SelectedItems[0].SubItems[1].Text;
+              
+                if (type == "<DIR>")
+                {
+                    PopulateListView(selectedPath);
+                }
+                else
+                {
+                    Process.Start(selectedPath);
+                }
             }
         }
 
